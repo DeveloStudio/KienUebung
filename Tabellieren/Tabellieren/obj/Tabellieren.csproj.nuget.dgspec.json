@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\CsvTabellieren\\CsvTabellieren\\CsvTabellieren.csproj": {}
+    "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\Tabellieren\\Tabellieren\\Tabellieren.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\CsvTabellieren\\CsvTabellieren\\CsvTabellieren.csproj": {
+    "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\Tabellieren\\Tabellieren\\Tabellieren.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\CsvTabellieren\\CsvTabellieren\\CsvTabellieren.csproj",
-        "projectName": "CsvTabellieren",
-        "projectPath": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\CsvTabellieren\\CsvTabellieren\\CsvTabellieren.csproj",
+        "projectUniqueName": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\Tabellieren\\Tabellieren\\Tabellieren.csproj",
+        "projectName": "Tabellieren",
+        "projectPath": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\Tabellieren\\Tabellieren\\Tabellieren.csproj",
         "packagesPath": "C:\\Users\\nguyen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\CsvTabellieren\\CsvTabellieren\\obj\\",
+        "outputPath": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\Tabellieren\\Tabellieren\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -45,16 +45,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "dependencies": {
-            "NUnit": {
-              "target": "Package",
-              "version": "[3.13.2, )"
-            },
-            "NUnit3TestAdapter": {
-              "target": "Package",
-              "version": "[4.0.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",

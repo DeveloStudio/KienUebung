@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "wgNaC4KdFZefqUHbTOyOrIInRLQvM3oa/IkMXhjOSo9jQfic4K3tssNX24uPfECwIOsKCv0NEDZPaBpaQq5mZQ==",
+  "dgSpecHash": "gZNLf3VDGjINlwohdqRp4YHNUJ2Je3ZR5ClpMKkCpioP1iK6V0NihHTNnS8gwHK8HsXJlQKbVvI4hlYS4UF1QA==",
   "success": true,
   "projectFilePath": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\CsvTabellieren\\CsvTabellieren\\CsvTabellieren.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nguyen\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\nguyen\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
-    "C:\\Users\\nguyen\\.nuget\\packages\\nunit\\3.13.2\\nunit.3.13.2.nupkg.sha512"
+    "C:\\Users\\nguyen\\.nuget\\packages\\nunit\\3.13.2\\nunit.3.13.2.nupkg.sha512",
+    "C:\\Users\\nguyen\\.nuget\\packages\\nunit3testadapter\\4.0.0\\nunit3testadapter.4.0.0.nupkg.sha512"
   ],
   "logs": []
 }
