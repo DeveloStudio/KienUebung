@@ -12,3 +12,17 @@ C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\Tabellieren\
 C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabellieren.dll
 C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabellieren.pdb
 C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabellieren.genruntimeconfig.cache
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Tabellieren.exe
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Tabellieren.deps.json
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Tabellieren.runtimeconfig.json
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Tabellieren.runtimeconfig.dev.json
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Tabellieren.dll
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Tabellieren.pdb
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabellieren.csproj.AssemblyReference.cache
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabellieren.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabellieren.AssemblyInfoInputs.cache
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabellieren.AssemblyInfo.cs
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabellieren.csproj.CoreCompileInputs.cache
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabellieren.dll
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabellieren.pdb
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabellieren.genruntimeconfig.cache
