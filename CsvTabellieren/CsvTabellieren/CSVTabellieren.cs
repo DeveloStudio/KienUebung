@@ -15,7 +15,7 @@ namespace CsvTabellieren
             int[] stringLength;
             int stringCount = 0;
 
-            // Hilfsvariablen für die Erstellung den Zeichen des Headers, auf 50 limitiert
+            // Hilfsvariablen für die Erstellung den Zeichen des Headers, auf 50 Spalten limitiert
             string[] headerString = new string[50];
             bool head = false;
 
