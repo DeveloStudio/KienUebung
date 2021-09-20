@@ -9,30 +9,22 @@ namespace Tabellieren
     {
         static void Main(string[] args)
         {
-            CSVTabellieren tabellieren = new CSVTabellieren();
+            ICSV tabellieren = new CSVTabellieren();
 
-            // Dateipfad finden
-            string directory = Directory.GetCurrentDirectory();
-            string pfad = directory + "\\Data.csv";
-            Console.WriteLine("Pfad ist: " + pfad);
-            Console.WriteLine();
+            ILoad loadData = new LoadData();
 
-            if (!File.Exists(pfad))
+            string[] datas = loadData.Data();
+
+            if (datas != null)
             {
-                Console.WriteLine("File nicht existiert");
+                IEnumerable<string> tabellen = tabellieren.Tabellieren(datas);
             }
-            else
-            {
-                string[] zeilen = File.ReadAllLines(pfad);
-                Console.WriteLine("CSV Datei hat insgesamt " + zeilen.Length + " Einträge");
-                IEnumerable<string> tabellen = tabellieren.Tabellieren(zeilen);
 
-                if (tabellen != null)
+            if (datas != null)
+            {
+                foreach (var data in datas)
                 {
-                    foreach(var tabelle in tabellen)
-                    {
-                        Console.WriteLine(tabelle);
-                    }
+                    Console.WriteLine(data);
                 }
             }
         }
