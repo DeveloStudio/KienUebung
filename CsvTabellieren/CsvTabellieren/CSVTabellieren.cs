@@ -9,15 +9,24 @@ namespace CsvTabellieren
     {
         static void Main(string[] args)
         {
-            string directory = Directory.GetCurrentDirectory();
-            int[] stringLength;
-            string[] headerString = new string[50];
-            string[,] tabelle;
-            string[] tmp;
-            bool head = false;
-            int stringCount = 0;
             StringBuilder builder;
 
+            // Maximal Länge allen Spalten
+            int[] stringLength;
+            int stringCount = 0;
+
+            // Hilfsvariablen für die Erstellung den Zeichen des Headers, auf 50 limitiert
+            string[] headerString = new string[50];
+            bool head = false;
+
+            // 2-dimensionales Array für Speicherung von Daten
+            string[,] tabelle;
+
+            // temporäres Array als Hilfmittel für die Erstellung der Tabelle
+            string[] tmp;
+
+            // Dateipfad finden
+            string directory = Directory.GetCurrentDirectory();
             string pfad = directory + "\\Data.csv";
             Console.WriteLine("Pfad ist: " + pfad);
             Console.WriteLine();
@@ -26,10 +35,11 @@ namespace CsvTabellieren
             {
                 Console.WriteLine("File nicht existiert");
             }
-
             else
             {
                 // Datei einlesen und in Variablen zuweisen
+                // [] zeilen : speichert allen Zeilen der CSV-Datei
+                // [] spalten : Auswahl für die Berechnung die zu den bearbeiteten Spalten der Tabelle (Wieviele Spalten soll angezeigt werden) 
                 string[] zeilen = File.ReadAllLines(pfad);
                 Console.WriteLine("CSV Datei hat insgesamt " + zeilen.Length + " Einträge");
                 string[] spalten = zeilen[0].Split(';');
@@ -39,12 +49,30 @@ namespace CsvTabellieren
                 tabelle = new string[zeilen.Length, spalten.Length];
                 for(int row = 0; row < zeilen.Length; row++)
                 {
+                    // workingArr erstellt mit null-Werte
+                    string[] workingArr = new string[spalten.Length];
                     tmp = zeilen[row].Split(';');
+
+                    // Daten vom tmp in workingArr kopieren
                     for(int column = 0; column < spalten.Length; column++)
                     {
-                        tabelle[row , column] = tmp[column];
+                        if (workingArr.Length < tmp.Length)
+                        {
+                            Array.Copy(tmp, 0, workingArr, 0, workingArr.Length);
+                        }
+                        else
+                        {
+                            Array.Copy(tmp, 0, workingArr, 0, tmp.Length);
+                        }
+
+                        // Für Zeilen mit leeren Werten dann " " zuweisen
+                        if (workingArr[column] == null)
+                        {
+                            workingArr[column] = " ";
+                        }
+
+                        tabelle[row , column] = workingArr[column];
                     }
-                    //tmp = null;
                 }
 
                 // Anzahl größten Stringlänge per Spalte berechnen
@@ -63,16 +91,6 @@ namespace CsvTabellieren
                 }
                 Console.WriteLine();
 
-                // Tabelle ausgeben
-                for(int i = 0; i < zeilen.Length; i++)
-                {
-                    for(int j = 0; j < spalten.Length; j++)
-                    {
-                        Console.WriteLine(tabelle[i , j]);
-                    }
-                    Console.WriteLine();
-                }
-
                 // Daten tabellieren
                 for (int row = 0; row < zeilen.Length; row++)
                 {
@@ -82,11 +100,13 @@ namespace CsvTabellieren
                         builder = new StringBuilder(tabelle[row, column]);
                         if (tabelle[row, column].Length < stringLength[column])
                         {
+                            // Leerzeichen am Ende jeden String hinzufügen, if der String < maximale Stringlänge der Spalte
                             builder.Insert(tabelle[row, column].Length, " ", stringLength[column] - (tabelle[row, column].Length));
                         }
                         builder.Append("|");
                         toString[column] = builder.ToString();
 
+                        // Für die Darstellung den Zeichen unter Titelname
                         if (head == false)
                         {
                             builder = new StringBuilder();
@@ -105,6 +125,7 @@ namespace CsvTabellieren
             }
         }
 
+        // Daten aus einer Zeile ausgeben
         public static string ToString(string[] daten)
         {
             StringBuilder tmp = new StringBuilder();
@@ -115,6 +136,14 @@ namespace CsvTabellieren
             return tmp.ToString();
         }
 
-
+        // Tabelle ausgeben
+        //for(int i = 0; i < zeilen.Length; i++)
+        //{
+        //    for(int j = 0; j < spalten.Length; j++)
+        //    {
+        //        Console.WriteLine(tabelle[i , j]);
+        //    }
+        //    Console.WriteLine();
+        //}
     }
 }
