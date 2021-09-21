@@ -9,24 +9,39 @@ namespace Tabellieren
     {
         static void Main(string[] args)
         {
-            ICSV tabellieren = new CSVTabellieren();
+            //ICSV tabellieren = new CSVTabellieren();
 
-            ILoad loadData = new LoadData();
+            //ILoad loadData = new LoadData();
 
-            string[] datas = loadData.Data();
+            //IOutputInf Output = new MyOutput();
 
-            if (datas != null)
+            //string[] datas = loadData.Data();
+
+            //IEnumerable<string> tabellen = tabellieren.Tabellieren(datas);
+
+            //Output.Out(tabellen);
+            try
             {
-                IEnumerable<string> tabellen = tabellieren.Tabellieren(datas);
-            }
-
-            if (datas != null)
-            {
-                foreach (var data in datas)
+                try
                 {
-                    Console.WriteLine(data);
+                    StreamReader reader = new StreamReader(@"C: \Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Data1.txt");
+                    Console.WriteLine(reader.ReadToEnd());
+                }
+                catch (Exception ex)
+                {
+                    //Console.WriteLine(ex.ToString());
+                    //Console.WriteLine(ex.Message);
+                    //Console.WriteLine(ex.MyMessage());
+                    throw new ICustomException("I catched this: " + ex.Message, ex);
+                    //ex.Message;
                 }
             }
+            catch(ICustomException ex)
+            {
+                //Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.InnerException.GetType().Name);
+            }
+           
         }
     }
 }
