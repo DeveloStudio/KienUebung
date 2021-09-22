@@ -6,6 +6,6 @@ namespace Tabellieren
 {
     interface ICSV
     {
-        IEnumerable<string> Tabellieren (IEnumerable<string> CSV_zeilen);
+        IEnumerable<string> Tabellieren(IEnumerable<string> CSV_zeilen);
     }
 }

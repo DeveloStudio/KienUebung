@@ -33,7 +33,7 @@ namespace Tabellieren
                     throw new CustomException(ex.Message, ex);
                 }
             }
-            catch(CustomException ex)
+            catch (CustomException ex)
             {
                 Console.WriteLine(CustomException.CustomMessage(ex));
             }

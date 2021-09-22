@@ -7,13 +7,13 @@ namespace Tabellieren
 {
     class CustomException : Exception
     {
-        public CustomException () : base () { }
+        public CustomException() : base() { }
 
-        public CustomException (string message) : base (message) { }
+        public CustomException(string message) : base(message) { }
 
-        public CustomException(string message, Exception innerException) : base (message, innerException) { }
+        public CustomException(string message, Exception innerException) : base(message, innerException) { }
 
-        public static string CustomMessage (Exception ex)
+        public static string CustomMessage(Exception ex)
         {
             // Gets the method that throws the current exception
             MethodBase site = ex.TargetSite;
@@ -21,7 +21,7 @@ namespace Tabellieren
             // Exception type
             string exceptionType = ex.InnerException.GetType().Name == null ? "Unknown Exception" : ex.InnerException.GetType().Name;
 
-            // Line number 
+            // Line number where exception occur
             StackTrace trace = new StackTrace(ex.InnerException, true);
             var stackFrame = trace.GetFrame(trace.FrameCount - 1);
             var lineNumber = stackFrame.GetFileLineNumber();
@@ -40,10 +40,10 @@ namespace Tabellieren
                 builder.Append("The type of exception is: " + exceptionType + "\n");
                 builder.Append("\nFrom namespace " + namespaceName + " in class " + className + " under the method " + methodName);
 
-                if(parameters != null)
+                if (parameters != null)
                 {
                     bool firstElement = true;
-                    foreach(ParameterInfo parameter in parameters)
+                    foreach (ParameterInfo parameter in parameters)
                     {
                         if (firstElement)
                         {

@@ -6,6 +6,6 @@ namespace Tabellieren
 {
     interface IOutput
     {
-        public void Out (IEnumerable<string> datas);
+        public void Out(IEnumerable<string> datas);
     }
 }

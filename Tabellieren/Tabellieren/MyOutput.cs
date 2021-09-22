@@ -8,9 +8,9 @@ namespace Tabellieren
     {
         public void Out(IEnumerable<string> datas)
         {
-            if(datas != null)
+            if (datas != null)
             {
-                foreach(var data in datas)
+                foreach (var data in datas)
                 {
                     Console.WriteLine(data);
                 }
