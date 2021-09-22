@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Tabellieren
 {
-    interface IOutputInf
+    interface IOutput
     {
         public void Out (IEnumerable<string> datas);
     }

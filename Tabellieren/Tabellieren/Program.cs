@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Text;
 
 namespace Tabellieren
@@ -13,7 +14,7 @@ namespace Tabellieren
 
             //ILoad loadData = new LoadData();
 
-            //IOutputInf Output = new MyOutput();
+            //IOutput Output = new MyOutput();
 
             //string[] datas = loadData.Data();
 
@@ -24,24 +25,18 @@ namespace Tabellieren
             {
                 try
                 {
-                    StreamReader reader = new StreamReader(@"C: \Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Data1.txt");
+                    StreamReader reader = new StreamReader(@"C: \Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Data.txt");
                     Console.WriteLine(reader.ReadToEnd());
                 }
                 catch (Exception ex)
                 {
-                    //Console.WriteLine(ex.ToString());
-                    //Console.WriteLine(ex.Message);
-                    //Console.WriteLine(ex.MyMessage());
-                    throw new ICustomException("I catched this: " + ex.Message, ex);
-                    //ex.Message;
+                    throw new CustomException(ex.Message, ex);
                 }
             }
-            catch(ICustomException ex)
+            catch(CustomException ex)
             {
-                //Console.WriteLine(ex.ToString());
-                Console.WriteLine(ex.InnerException.GetType().Name);
+                Console.WriteLine(CustomException.CustomMessage(ex));
             }
-           
         }
     }
 }
