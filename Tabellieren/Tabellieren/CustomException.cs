@@ -21,7 +21,7 @@ namespace Tabellieren
             // Exception type
             string exceptionType = ex.InnerException.GetType().Name == null ? "Unknown Exception" : ex.InnerException.GetType().Name;
 
-            // Line number where exception occur
+            // Line number where exception occur (pdb file needed)
             StackTrace trace = new StackTrace(ex.InnerException, true);
             var stackFrame = trace.GetFrame(trace.FrameCount - 1);
             var lineNumber = stackFrame.GetFileLineNumber();

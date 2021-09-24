@@ -15,16 +15,23 @@ namespace Tabellieren
             Console.WriteLine("Path is: " + pfad);
             Console.WriteLine();
 
-            if (!File.Exists(pfad))
+            try
             {
-                Console.WriteLine("File not exist!");
-                return null;
+                try
+                {
+                    string[] zeilen = File.ReadAllLines(pfad);
+                    Console.WriteLine("CSV-Data have overall " + zeilen.Length + " entries");
+                    return zeilen;
+                }
+                catch (Exception ex)
+                {
+                    throw new CustomException(ex.Message, ex);
+                }
             }
-            else
+            catch (CustomException ex)
             {
-                string[] zeilen = File.ReadAllLines(pfad);
-                Console.WriteLine("CSV-Data have overall " + zeilen.Length + " entries");
-                return zeilen;
+                Console.WriteLine(CustomException.CustomMessage(ex));
+                return null;
             }
         }
     }

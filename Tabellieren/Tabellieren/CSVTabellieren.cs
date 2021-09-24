@@ -27,7 +27,15 @@ namespace Tabellieren
 
         public IEnumerable<string> Tabellieren(IEnumerable<string> CSV_zeilen)
         {
-            return DatenBearbeiten(CSV_zeilen);
+            if(CSV_zeilen != null)
+            {
+                return DatenBearbeiten(CSV_zeilen);
+            }
+            else
+            {
+                Console.WriteLine("Tabelle kann nicht erstellt werden! ");
+                return null;
+            }
         }
 
         // Daten tabellieren

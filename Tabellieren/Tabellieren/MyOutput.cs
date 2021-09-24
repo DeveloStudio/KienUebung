@@ -8,12 +8,23 @@ namespace Tabellieren
     {
         public void Out(IEnumerable<string> datas)
         {
-            if (datas != null)
+            try
             {
-                foreach (var data in datas)
+                try
                 {
-                    Console.WriteLine(data);
+                    foreach (string data in datas)
+                    {
+                        Console.WriteLine(data);
+                    }
                 }
+                catch (Exception ex)
+                {
+                    throw new CustomException(ex.Message, ex);
+                }
+            }
+            catch (CustomException ex)
+            {
+                Console.WriteLine(CustomException.CustomMessage(ex));
             }
         }
     }
