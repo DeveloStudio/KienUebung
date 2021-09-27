@@ -22,6 +22,7 @@ namespace Tabellieren
             string exceptionType = ex.InnerException.GetType().Name == null ? "Unknown Exception" : ex.InnerException.GetType().Name;
 
             // Line number where exception occur (pdb file needed)
+            // From StackOverFlow: https://stackoverflow.com/questions/3328990/how-can-i-get-the-line-number-which-threw-exception
             StackTrace trace = new StackTrace(ex.InnerException, true);
             var stackFrame = trace.GetFrame(trace.FrameCount - 1);
             var lineNumber = stackFrame.GetFileLineNumber();
@@ -31,7 +32,7 @@ namespace Tabellieren
                 StringBuilder builder = new StringBuilder("--------------------\n");
                 StringBuilder paramsBuilder = new StringBuilder();
 
-                // metadata 
+                // Metadata 
                 string namespaceName = site.DeclaringType.Namespace == null ? " " : site.DeclaringType.Namespace;
                 string className = site.DeclaringType.Name == null ? " " : site.DeclaringType.Name;
                 string methodName = site.Name == null ? " " : site.Name;
@@ -40,13 +41,14 @@ namespace Tabellieren
                 builder.Append("The type of exception is: " + exceptionType + "\n");
                 builder.Append("\nFrom namespace " + namespaceName + " in class " + className + " under the method " + methodName);
 
-                if (parameters != null)
+                if (parameters.Length != 0)
                 {
                     bool firstElement = true;
                     foreach (ParameterInfo parameter in parameters)
                     {
                         if (firstElement)
                         {
+                            //Console.WriteLine(parameter.ParameterType.Name);
                             paramsBuilder.Append("(" + parameter);
                             firstElement = false;
                         }

@@ -27,13 +27,23 @@ namespace Tabellieren
 
         public IEnumerable<string> Tabellieren(IEnumerable<string> CSV_zeilen)
         {
-            if(CSV_zeilen != null)
+            try
             {
-                return DatenBearbeiten(CSV_zeilen);
+                try
+                {
+                    TabellenErstellen(CSV_zeilen);
+                    StringLengthEachColumn();
+                    return DatenBearbeiten(CSV_zeilen);
+                }
+                catch (Exception ex)
+                {
+                    throw new CustomException(ex.Message, ex);
+                }
             }
-            else
+            catch (CustomException ex)
             {
-                Console.WriteLine("Tabelle kann nicht erstellt werden! ");
+                Console.WriteLine(CustomException.CustomMessage(ex));
+                Console.WriteLine("Table cannot be created!");
                 return null;
             }
         }
@@ -41,8 +51,6 @@ namespace Tabellieren
         // Daten tabellieren
         private IEnumerable<string> DatenBearbeiten(IEnumerable<string> CSV_zeilen)
         {
-            TabellenErstellen(CSV_zeilen);
-
             // Ergebnis jede Spalte wird hier gespeichert
             List<string> results = new List<string>();
 
@@ -123,7 +131,6 @@ namespace Tabellieren
                     tabelle[row, column] = workingArr[column];
                 }
             }
-            StringLengthEachColumn();
         }
 
         // Anzahl größten Stringlänge per Spalte berechnen

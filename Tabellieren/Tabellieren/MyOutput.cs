@@ -8,23 +8,32 @@ namespace Tabellieren
     {
         public void Out(IEnumerable<string> datas)
         {
-            try
+            if(datas != null)
             {
-                try
+                foreach (string data in datas)
                 {
-                    foreach (string data in datas)
+                    try
                     {
-                        Console.WriteLine(data);
+                        try
+                        {
+                            Console.WriteLine(data);
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new CustomException(ex.Message, ex);
+                        }
+                    }
+                    catch (CustomException ex)
+                    {
+                        Console.WriteLine(CustomException.CustomMessage(ex));
                     }
                 }
-                catch (Exception ex)
-                {
-                    throw new CustomException(ex.Message, ex);
-                }
+                Console.WriteLine();
             }
-            catch (CustomException ex)
+            else
             {
-                Console.WriteLine(CustomException.CustomMessage(ex));
+                Console.WriteLine("Cannot print the data, something is wrong! Please check and try again!");
+                Console.WriteLine();
             }
         }
     }
