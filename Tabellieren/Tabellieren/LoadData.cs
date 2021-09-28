@@ -3,7 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Tabellieren
+namespace Tabulate
 {
     class LoadData : ILoad
     {

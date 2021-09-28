@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 
-namespace Tabellieren
+namespace Tabulate
 {
     class CustomException : Exception
     {
@@ -19,7 +19,7 @@ namespace Tabellieren
             MethodBase site = ex.TargetSite;
 
             // Exception type
-            string exceptionType = ex.InnerException.GetType().Name == null ? "Unknown Exception" : ex.InnerException.GetType().Name;
+            string exceptionType = ex.InnerException.GetType().Name ?? "Unknown Exception";
 
             // Line number where exception occur (pdb file needed)
             // From StackOverFlow: https://stackoverflow.com/questions/3328990/how-can-i-get-the-line-number-which-threw-exception
@@ -33,9 +33,9 @@ namespace Tabellieren
                 StringBuilder paramsBuilder = new StringBuilder();
 
                 // Metadata 
-                string namespaceName = site.DeclaringType.Namespace == null ? " " : site.DeclaringType.Namespace;
-                string className = site.DeclaringType.Name == null ? " " : site.DeclaringType.Name;
-                string methodName = site.Name == null ? " " : site.Name;
+                string namespaceName = site.DeclaringType.Namespace ?? " ";
+                string className = site.DeclaringType.Name ?? " ";
+                string methodName = site.Name ?? " ";
                 ParameterInfo[] parameters = site.GetParameters();
 
                 builder.Append("The type of exception is: " + exceptionType + "\n");

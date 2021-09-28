@@ -1,0 +1,14 @@
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Tabulate.exe
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Tabulate.deps.json
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Tabulate.runtimeconfig.json
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Tabulate.runtimeconfig.dev.json
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Tabulate.dll
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Tabulate.pdb
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabulate.csproj.AssemblyReference.cache
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabulate.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabulate.AssemblyInfoInputs.cache
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabulate.AssemblyInfo.cs
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabulate.csproj.CoreCompileInputs.cache
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabulate.dll
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabulate.pdb
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabulate.genruntimeconfig.cache

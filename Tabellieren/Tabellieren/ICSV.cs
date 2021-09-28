@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Tabellieren
+namespace Tabulate
 {
     interface ICSV
     {
-        IEnumerable<string> Tabellieren(Data data);
+        IEnumerable<string> Tabulate(Data data);
     }
 }

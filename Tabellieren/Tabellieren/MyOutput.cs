@@ -2,39 +2,41 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Tabellieren
+namespace Tabulate
 {
     class MyOutput : IOutput
     {
+        public MyOutput()
+        {
+
+        }
+
         public void Out(IEnumerable<string> datas)
         {
-            if(datas != null)
+            if (datas is null)
             {
-                foreach (string data in datas)
+                throw new ArgumentNullException(nameof(datas));
+            }
+
+            foreach (string data in datas)
+            {
+                try
                 {
                     try
                     {
-                        try
-                        {
-                            Console.WriteLine(data);
-                        }
-                        catch (Exception ex)
-                        {
-                            throw new CustomException(ex.Message, ex);
-                        }
+                        Console.WriteLine(data);
                     }
-                    catch (CustomException ex)
+                    catch (Exception ex)
                     {
-                        Console.WriteLine(CustomException.CustomMessage(ex));
+                        throw new CustomException(ex.Message, ex);
                     }
                 }
-                Console.WriteLine();
+                catch (CustomException ex)
+                {
+                    Console.WriteLine(CustomException.CustomMessage(ex));
+                }
             }
-            else
-            {
-                Console.WriteLine("Cannot print the data, something is wrong! Please check and try again!");
-                Console.WriteLine();
-            }
+            Console.WriteLine();
         }
     }
 }

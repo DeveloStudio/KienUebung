@@ -15,9 +15,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\Tabellieren\\Tabellieren\\Tabellieren.csproj",
-      "projectName": "Tabellieren",
-      "projectPath": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\Tabellieren\\Tabellieren\\Tabellieren.csproj",
+      "projectUniqueName": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\Tabellieren\\Tabellieren\\Tabulate.csproj",
+      "projectName": "Tabulate",
+      "projectPath": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\Tabellieren\\Tabellieren\\Tabulate.csproj",
       "packagesPath": "C:\\Users\\nguyen\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\Tabellieren\\Tabellieren\\obj\\",
       "projectStyle": "PackageReference",

@@ -4,23 +4,29 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 
-namespace Tabellieren
+namespace Tabulate
 {
     class Program
     {
         static void Main(string[] args)
         {
-            ICSV tabellieren = new CSVTabellieren();
+            // Interface for create a table
+            ICSV tabulate = new CSVTabulate();
 
+            // Interface for load data
             ILoad loadData = new LoadData();
 
+            // Interface for print data to the console
             IOutput Output = new MyOutput();
 
+            // Load data from local computer
             Data data = loadData.Load();
 
-            IEnumerable<string> tabellen = tabellieren.Tabellieren(data);
+            // Create table
+            IEnumerable<string> table = tabulate.Tabulate(data);
 
-            Output.Out(tabellen);
+            // Print data
+            Output.Out(table);
         }
     }
 }
