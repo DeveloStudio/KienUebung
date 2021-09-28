@@ -8,20 +8,28 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\Pushpa\\.nuget\\packages\\": {}
+    "C:\\Users\\nguyen\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Pushpa\\Downloads\\Uebung\\Tabellieren\\Tabellieren\\Tabellieren.csproj",
+      "projectUniqueName": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\Tabellieren\\Tabellieren\\Tabellieren.csproj",
       "projectName": "Tabellieren",
-      "projectPath": "C:\\Users\\Pushpa\\Downloads\\Uebung\\Tabellieren\\Tabellieren\\Tabellieren.csproj",
-      "packagesPath": "C:\\Users\\Pushpa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Pushpa\\Downloads\\Uebung\\Tabellieren\\Tabellieren\\obj\\",
+      "projectPath": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\Tabellieren\\Tabellieren\\Tabellieren.csproj",
+      "packagesPath": "C:\\Users\\nguyen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\Tabellieren\\Tabellieren\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Pushpa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -60,7 +68,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -8,15 +8,8 @@ namespace Tabellieren
 {
     class CSVTabellieren : ICSV
     {
-        private StringBuilder builder;
-
         // Maximal Länge allen Spalten
         private int[] stringLength;
-        private int stringCount = 0;
-
-        // Hilfsvariablen für die Erstellung den Zeichen des Headers, auf 50 Spalten limitiert
-        private string[] headerString = new string[50];
-        private bool head = false;
 
         // 2-dimensionales Array für Speicherung von Daten
         private string[,] tabelle;
@@ -25,15 +18,19 @@ namespace Tabellieren
         private string[] zeilen;
         private string[] spalten;
 
-        public IEnumerable<string> Tabellieren(IEnumerable<string> CSV_zeilen)
+        public IEnumerable<string> Tabellieren(Data data)
         {
             try
             {
                 try
                 {
-                    TabellenErstellen(CSV_zeilen);
+                    Console.WriteLine(data.ToString());
+                    Console.WriteLine();
+                    string[] CSV_zeilen = File.ReadAllLines(data.Path);
+                    //Console.WriteLine("CSV-Data have overall " + CSV_zeilen.Length + " entries");
+                    TabellenErstellen(CSV_zeilen, data.Symbol);
                     StringLengthEachColumn();
-                    return DatenBearbeiten(CSV_zeilen);
+                    return DatenBearbeiten();
                 }
                 catch (Exception ex)
                 {
@@ -49,15 +46,21 @@ namespace Tabellieren
         }
 
         // Daten tabellieren
-        private IEnumerable<string> DatenBearbeiten(IEnumerable<string> CSV_zeilen)
+        private IEnumerable<string> DatenBearbeiten()
         {
+            StringBuilder builder;
+
             // Ergebnis jede Spalte wird hier gespeichert
             List<string> results = new List<string>();
 
+            // Hilfsvariablen für die Erstellung den Zeichen des Headers
+            string[] headerString = new string[spalten.Length];
+            bool head = false;
+
             for (int row = 0; row < zeilen.Length; row++)
             {
-                //String Array für die Ausgabe, auf 50 Spalten limitiert
-                string[] toString = new string[50];
+                //String array for the output, create one per row
+                string[] toString = new string[spalten.Length];
 
                 for (int column = 0; column < spalten.Length; column++)
                 {
@@ -90,13 +93,13 @@ namespace Tabellieren
         }
 
         // Tabellen erstellen
-        private void TabellenErstellen(IEnumerable<string> CSV_zeilen)
+        private void TabellenErstellen(IEnumerable<string> CSV_zeilen, string symbol)
         {
             // Datei in Variablen zuweisen
             // [] zeilen : speichert allen Zeilen der CSV-Datei
             // [] spalten : Auswahl für die Berechnung die zu den bearbeiteten Spalten der Tabelle (Wieviele Spalten soll angezeigt werden)
             zeilen = CSV_zeilen.ToArray();
-            spalten = zeilen[0].Split(";");
+            spalten = zeilen[0].Split(symbol);
             stringLength = new int[spalten.Length];
             tabelle = new string[zeilen.Length, spalten.Length];
 
@@ -108,7 +111,7 @@ namespace Tabellieren
             {
                 // workingArr erstellt mit null-Werte
                 string[] workingArr = new string[spalten.Length];
-                tmp = zeilen[row].Split(';');
+                tmp = zeilen[row].Split(symbol);
 
                 // Daten vom tmp in workingArr kopieren
                 for (int column = 0; column < spalten.Length; column++)
@@ -136,6 +139,7 @@ namespace Tabellieren
         // Anzahl größten Stringlänge per Spalte berechnen
         private void StringLengthEachColumn()
         {
+            int stringCount = 0;
             for (int column = 0; column < spalten.Length; column++)
             {
                 for (int row = 0; row < zeilen.Length; row++)
@@ -147,7 +151,7 @@ namespace Tabellieren
                 }
                 stringLength[column] = stringCount;
                 stringCount = 0;
-                Console.WriteLine("Größte Länge von " + column + " Spalte: " + stringLength[column]);
+                //Console.WriteLine("Größte Länge von " + column + " Spalte: " + stringLength[column]);
             }
             Console.WriteLine();
         }

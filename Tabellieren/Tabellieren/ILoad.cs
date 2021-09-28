@@ -6,6 +6,6 @@ namespace Tabellieren
 {
     interface ILoad
     {
-        public string[] Data();
+        public Data Load();
     }
 }

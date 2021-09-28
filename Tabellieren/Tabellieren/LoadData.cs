@@ -7,21 +7,15 @@ namespace Tabellieren
 {
     class LoadData : ILoad
     {
-        public string[] Data()
+        public Data Load()
         {
-            // Search for data path
-            string directory = Directory.GetCurrentDirectory();
-            string pfad = directory + "\\Data.csv";
-            Console.WriteLine("Path is: " + pfad);
-            Console.WriteLine();
+            Data data = FindData();
 
             try
             {
                 try
                 {
-                    string[] zeilen = File.ReadAllLines(pfad);
-                    Console.WriteLine("CSV-Data have overall " + zeilen.Length + " entries");
-                    return zeilen;
+                    return data;
                 }
                 catch (Exception ex)
                 {
@@ -33,6 +27,36 @@ namespace Tabellieren
                 Console.WriteLine(CustomException.CustomMessage(ex));
                 return null;
             }
+        }
+
+        private Data FindData()
+        {
+            StringBuilder builder = new StringBuilder();
+            string symbol = " ";
+            int i = -1;
+
+            // Ask for data path and symbol
+            string directory = Directory.GetCurrentDirectory();
+            Console.WriteLine("The file you want to open: ");
+            string file = Console.ReadLine();
+            Console.WriteLine();
+
+            while (i < 0)
+            {
+                Console.WriteLine("The symbol you want your file to be separate (Only accept ; or , or .): ");
+                symbol = Console.ReadLine();
+                if (symbol.Equals(";") || symbol.Equals(",") || symbol.Equals("."))
+                {
+                    i++;
+                }
+            }
+            Console.WriteLine();
+
+            builder.Append(directory);
+            builder.Append("\\");
+            builder.Append(file);
+
+            return new Data(builder.ToString(), symbol);
         }
     }
 }

@@ -16,9 +16,9 @@ namespace Tabellieren
 
             IOutput Output = new MyOutput();
 
-            string[] datas = loadData.Data();
+            Data data = loadData.Load();
 
-            IEnumerable<string> tabellen = tabellieren.Tabellieren(datas);
+            IEnumerable<string> tabellen = tabellieren.Tabellieren(data);
 
             Output.Out(tabellen);
         }
