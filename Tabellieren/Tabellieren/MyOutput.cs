@@ -4,39 +4,19 @@ using System.Text;
 
 namespace Tabulate
 {
-    class MyOutput : IOutput
+    public class MyOutput : IOutput
     {
-        public MyOutput()
-        {
-
-        }
-
         public void Out(IEnumerable<string> datas)
         {
-            if (datas is null)
+            if (datas == null)
             {
-                throw new ArgumentNullException(nameof(datas));
+                throw new CustomException("Data is null");
             }
 
             foreach (string data in datas)
             {
-                try
-                {
-                    try
-                    {
-                        Console.WriteLine(data);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new CustomException(ex.Message, ex);
-                    }
-                }
-                catch (CustomException ex)
-                {
-                    Console.WriteLine(CustomException.CustomMessage(ex));
-                }
+                Console.WriteLine(data);
             }
-            Console.WriteLine();
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Tabulate
 {
-    class CustomException : Exception
+    public class CustomException : Exception
     {
         public CustomException() : base() { }
 
@@ -15,61 +15,64 @@ namespace Tabulate
 
         public static string CustomMessage(Exception ex)
         {
-            // Gets the method that throws the current exception
-            MethodBase site = ex.TargetSite;
-
-            // Exception type
-            string exceptionType = ex.InnerException.GetType().Name ?? "Unknown Exception";
-
-            // Line number where exception occur (pdb file needed)
-            // From StackOverFlow: https://stackoverflow.com/questions/3328990/how-can-i-get-the-line-number-which-threw-exception
-            StackTrace trace = new StackTrace(ex.InnerException, true);
-            var stackFrame = trace.GetFrame(trace.FrameCount - 1);
-            var lineNumber = stackFrame.GetFileLineNumber();
-
-            if (site != null)
+            if (ex.InnerException != null)
             {
-                StringBuilder builder = new StringBuilder("--------------------\n");
-                StringBuilder paramsBuilder = new StringBuilder();
+                // Gets the method that throws the current exception
+                MethodBase site = ex.TargetSite;
 
-                // Metadata 
-                string namespaceName = site.DeclaringType.Namespace ?? " ";
-                string className = site.DeclaringType.Name ?? " ";
-                string methodName = site.Name ?? " ";
-                ParameterInfo[] parameters = site.GetParameters();
+                // Exception type
+                string exceptionType = ex.InnerException.GetType().Name ?? "Unknown Exception";
 
-                builder.Append("The type of exception is: " + exceptionType + "\n");
-                builder.Append("\nFrom namespace " + namespaceName + " in class " + className + " under the method " + methodName);
+                // Line number where exception occur (pdb file needed)
+                // From StackOverFlow: https://stackoverflow.com/questions/3328990/how-can-i-get-the-line-number-which-threw-exception
+                StackTrace trace = new StackTrace(ex.InnerException, true);
+                var stackFrame = trace.GetFrame(trace.FrameCount - 1);
+                var lineNumber = stackFrame.GetFileLineNumber();
 
-                if (parameters.Length != 0)
+                if (site != null)
                 {
-                    bool firstElement = true;
-                    foreach (ParameterInfo parameter in parameters)
+                    StringBuilder builder = new StringBuilder("--------------------\n");
+                    StringBuilder paramsBuilder = new StringBuilder();
+
+                    // Metadata 
+                    string namespaceName = site.DeclaringType.Namespace ?? " ";
+                    string className = site.DeclaringType.Name ?? " ";
+                    string methodName = site.Name ?? " ";
+                    ParameterInfo[] parameters = site.GetParameters();
+
+                    builder.Append("The type of exception is: " + exceptionType + "\n");
+                    builder.Append("\nFrom namespace " + namespaceName + " in class " + className + " under the method " + methodName);
+
+                    if (parameters.Length != 0)
                     {
-                        if (firstElement)
+                        bool firstElement = true;
+                        foreach (ParameterInfo parameter in parameters)
                         {
-                            //Console.WriteLine(parameter.ParameterType.Name);
-                            paramsBuilder.Append("(" + parameter);
-                            firstElement = false;
+                            if (firstElement)
+                            {
+                                //Console.WriteLine(parameter.ParameterType.Name);
+                                paramsBuilder.Append("(" + parameter);
+                                firstElement = false;
+                            }
+                            else
+                            {
+                                paramsBuilder.Append(", " + parameter);
+                            }
                         }
-                        else
-                        {
-                            paramsBuilder.Append(", " + parameter);
-                        }
+                        paramsBuilder.Append(")");
                     }
-                    paramsBuilder.Append(")");
+                    else
+                    {
+                        paramsBuilder.Append("()");
+                    }
+                    builder.Append(paramsBuilder);
+                    builder.Append(" at line: " + lineNumber + ". ");
+                    builder.Append("Here are some detail information: \n");
+                    builder.Append(ex.Message + "\n");
+                    return builder.Append("--------------------\n").ToString();
                 }
-                else
-                {
-                    paramsBuilder.Append("()");
-                }
-                builder.Append(paramsBuilder);
-                builder.Append(" at line: " + lineNumber + ". ");
-                builder.Append("Here are some detail information: \n");
-                builder.Append(ex.Message + "\n");
-                return builder.Append("--------------------\n").ToString();
             }
-            return "Unknown Exception";
+            return ex.Message;
         }
     }
 }

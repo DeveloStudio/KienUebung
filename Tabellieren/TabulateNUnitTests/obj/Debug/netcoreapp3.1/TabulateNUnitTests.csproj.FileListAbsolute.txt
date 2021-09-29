@@ -97,3 +97,10 @@ C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\TabulateNUnitTests\obj\D
 C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\TabulateNUnitTests\obj\Debug\netcoreapp3.1\TabulateNUnitTests.dll
 C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\TabulateNUnitTests\obj\Debug\netcoreapp3.1\TabulateNUnitTests.pdb
 C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\TabulateNUnitTests\obj\Debug\netcoreapp3.1\TabulateNUnitTests.genruntimeconfig.cache
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\TabulateNUnitTests\bin\Debug\netcoreapp3.1\CoverletSourceRootsMapping
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\TabulateNUnitTests\bin\Debug\netcoreapp3.1\Tabulate.deps.json
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\TabulateNUnitTests\bin\Debug\netcoreapp3.1\Tabulate.runtimeconfig.json
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\TabulateNUnitTests\bin\Debug\netcoreapp3.1\Tabulate.runtimeconfig.dev.json
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\TabulateNUnitTests\bin\Debug\netcoreapp3.1\Tabulate.exe
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\TabulateNUnitTests\bin\Debug\netcoreapp3.1\Tabulate.dll
+C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\TabulateNUnitTests\bin\Debug\netcoreapp3.1\Tabulate.pdb

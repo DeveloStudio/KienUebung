@@ -5,38 +5,15 @@ using System.Text;
 
 namespace Tabulate
 {
-    class LoadData : ILoad
+    public class LoadData : ILoad
     {
         public Data Load()
         {
-            Data data = FindData();
-
-            try
-            {
-                try
-                {
-                    return data;
-                }
-                catch (Exception ex)
-                {
-                    throw new CustomException(ex.Message, ex);
-                }
-            }
-            catch (CustomException ex)
-            {
-                Console.WriteLine(CustomException.CustomMessage(ex));
-                return null;
-            }
-        }
-
-        private Data FindData()
-        {
-            StringBuilder builder = new StringBuilder();
             string symbol = " ";
             int i = -1;
 
             // Ask for data path and symbol
-            string directory = Directory.GetCurrentDirectory();
+            string path = Directory.GetCurrentDirectory();
             Console.WriteLine("The file you want to open: ");
             string file = Console.ReadLine();
             Console.WriteLine();
@@ -52,11 +29,35 @@ namespace Tabulate
             }
             Console.WriteLine();
 
-            builder.Append(directory);
+            return CreateDataPath(path, file, symbol);
+        }
+
+        public static Data CreateDataPath(string path, string filename, string symbol)
+        {
+            StringBuilder builder = new StringBuilder();
+
+            builder.Append(path);
             builder.Append("\\");
-            builder.Append(file);
+            builder.Append(filename);
 
             return new Data(builder.ToString(), symbol);
         }
+
+        //try
+        //{
+        //    try
+        //    {
+        //        return data;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new CustomException(ex.Message, ex);
+        //    }
+        //}
+        //catch (CustomException ex)
+        //{
+        //    Console.WriteLine(CustomException.CustomMessage(ex));
+        //    return null;
+        //}
     }
 }

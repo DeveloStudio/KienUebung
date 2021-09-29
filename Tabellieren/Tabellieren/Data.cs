@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Tabulate
 {
-    class Data
+    public class Data
     {
         private string path;
         private string symbol;
@@ -33,6 +33,22 @@ namespace Tabulate
             {
                 symbol = value;
             }
+        }
+
+        public override bool Equals(object obj)
+        {
+            // if the passed object is null
+            if (obj == null)
+            {
+                return false;
+            }
+            // if the passed object is not type Data
+            if (!(obj is Data))
+            {
+                return false;
+            }
+            // Check equals
+            return (this.path == ((Data)obj).Path) && (this.symbol == ((Data)obj).Symbol);
         }
 
         public override string ToString()
