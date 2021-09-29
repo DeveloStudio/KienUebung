@@ -42,22 +42,22 @@ namespace Tabulate
 
             return new Data(builder.ToString(), symbol);
         }
-
-        //try
-        //{
-        //    try
-        //    {
-        //        return data;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new CustomException(ex.Message, ex);
-        //    }
-        //}
-        //catch (CustomException ex)
-        //{
-        //    Console.WriteLine(CustomException.CustomMessage(ex));
-        //    return null;
-        //}
     }
 }
+
+//try
+//{
+//    try
+//    {
+//        return data;
+//    }
+//    catch (Exception ex)
+//    {
+//        throw new CustomException(ex.Message, ex);
+//    }
+//}
+//catch (CustomException ex)
+//{
+//    Console.WriteLine(CustomException.CustomMessage(ex));
+//    return null;
+//}

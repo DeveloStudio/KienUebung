@@ -45,7 +45,7 @@ namespace Tabulate
             }
         }
 
-        // Data tabulate
+        // Data tabulate  --> Change variable table because of tabletmp
         private IEnumerable<string> DataEdit()
         {
             StringBuilder builder;
@@ -93,15 +93,17 @@ namespace Tabulate
         }
 
         // Table create
-        private void CreateTable(IEnumerable<string> CSV_rows, string symbol)
+        private string[,] CreateTable(IEnumerable<string> CSV_rows, string symbol)
         {
+            string[,] tabletmp;
+
             // Data in variables assign
             // [] rows : stored all rows 
             // [] columns : stored the first row, splited by symbol
             rows = CSV_rows.ToArray();
             columns = rows[0].Split(symbol);
             stringLength = new int[columns.Length];
-            table = new string[rows.Length, columns.Length];
+            tabletmp = new string[rows.Length, columns.Length];
 
             // temporary array for creating the table
             string[] tmp;
@@ -116,6 +118,7 @@ namespace Tabulate
                 // Copy data from tmp to workingArr
                 for (int column = 0; column < columns.Length; column++)
                 {
+                    // Check Array.Copy, before for this for loop? and workingArr only need to be declare once?
                     if (workingArr.Length < tmp.Length)
                     {
                         Array.Copy(tmp, 0, workingArr, 0, workingArr.Length);
@@ -131,9 +134,10 @@ namespace Tabulate
                         workingArr[column] = " ";
                     }
 
-                    table[row, column] = workingArr[column];
+                    tabletmp[row, column] = workingArr[column];
                 }
             }
+            return tabletmp;
         }
 
         // Calculate the number of largest string lengths per column

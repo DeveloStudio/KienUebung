@@ -6,7 +6,7 @@ using Tabulate;
 
 namespace TabulateNUnitTests
 {
-    public class DataTests
+    public class TabulateTests
     {
         private MyOutput output;
 
@@ -30,7 +30,7 @@ namespace TabulateNUnitTests
             string file = "Data.csv";
             string symbol = ";";
             Data testData = new Data(path + "\\" + file, symbol);
-         
+
             Assert.AreEqual(testData, LoadData.CreateDataPath(path, file, symbol));
         }
 

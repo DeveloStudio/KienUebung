@@ -51,6 +51,11 @@ namespace Tabulate
             return (this.path == ((Data)obj).Path) && (this.symbol == ((Data)obj).Symbol);
         }
 
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(path, symbol, Path, Symbol);
+        }
+
         public override string ToString()
         {
             return "Path of the data is: " + this.path + " and the Symbol is: " + this.symbol;
