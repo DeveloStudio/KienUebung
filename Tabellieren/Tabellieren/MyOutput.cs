@@ -10,7 +10,7 @@ namespace Tabulate
         {
             if (datas == null)
             {
-                throw new CustomException("Data is null");
+                throw new CustomException("From class MyOutPut: Data is null");
             }
 
             foreach (string data in datas)

@@ -6,17 +6,10 @@ using System.Text;
 
 namespace Tabulate
 {
-    class CSVTabulate : ICSV
+    public class CSVTabulate : ICSV
     {
-        // Maximum length all columns, each array entry stores a matching maximum length
-        private int[] stringLength;
-
         // 2-dimensional array for storage data
         private string[,] table;
-
-        // Table rows and columns
-        private string[] rows;
-        private string[] columns;
 
         public IEnumerable<string> Tabulate(Data data)
         {
@@ -27,10 +20,9 @@ namespace Tabulate
                     Console.WriteLine(data.ToString());
                     Console.WriteLine();
                     string[] CSV_rows = File.ReadAllLines(data.Path);
-                    //Console.WriteLine("CSV-Data have overall " + CSV_zeilen.Length + " entries");
-                    CreateTable(CSV_rows, data.Symbol);
-                    StringLengthEachColumn();
-                    return DataEdit();
+                    table = CreateTable(CSV_rows, data.Symbol);
+                    StringLengthEachColumn(table);
+                    return DataEdit(table);
                 }
                 catch (Exception ex)
                 {
@@ -41,12 +33,92 @@ namespace Tabulate
             {
                 Console.WriteLine(CustomException.CustomMessage(ex));
                 Console.WriteLine("Table cannot be created!");
+                Console.WriteLine("--------------------");
                 return null;
             }
         }
 
-        // Data tabulate  --> Change variable table because of tabletmp
-        private IEnumerable<string> DataEdit()
+        // Table create
+        public string[,] CreateTable(IEnumerable<string> CSV_rows, string symbol)
+        {
+            string[,] tabletmp;
+
+            // Data in variables assign
+            // [] rows : stored all rows 
+            // [] columns : stored the first row, splited by symbol
+            string[] rows = (string[])CSV_rows;
+            string[] columns = rows[0].Split(symbol);
+            tabletmp = new string[rows.Length, columns.Length];
+
+            // temporary array for creating the table
+            string[] tmp;
+
+            // Create data in a two-dimensional array
+            for (int row = 0; row < rows.Length; row++)
+            {
+                // workingArr created with null values
+                string[] workingArr = new string[columns.Length];
+
+                tmp = rows[row].Split(symbol);
+
+                // Copy data from tmp to workingArr+
+                if (workingArr.Length < tmp.Length)
+                {
+                    Array.Copy(tmp, 0, workingArr, 0, workingArr.Length);
+                }
+                else
+                {
+                    Array.Copy(tmp, 0, workingArr, 0, tmp.Length);
+                }
+
+                // Copy data from workingArr to tabletmp
+                for (int column = 0; column < columns.Length; column++)
+                {
+                    // Assign " " for rows with empty values
+                    if (workingArr[column] == null)
+                    {
+                        workingArr[column] = "isNull";
+                    }
+
+                    if (workingArr[column] == string.Empty)
+                    {
+                        workingArr[column] = "isEmpty";
+                    }
+
+                    tabletmp[row, column] = workingArr[column];
+                }
+            }
+            return tabletmp;
+        }
+
+        // Calculate the number of largest string lengths per column
+        public int[] StringLengthEachColumn(string[,] table)
+        {
+            int rows = table.GetLength(0);
+            int columns = table.GetLength(1);
+
+            // Maximum length all columns, each array entry stores a matching maximum length
+            int[] stringLength = new int[columns];
+
+            int stringCount = 0;
+            for (int column = 0; column < columns; column++)
+            {
+                for (int row = 0; row < rows; row++)
+                {
+                    if (stringCount < table[row, column].Length)
+                    {
+                        stringCount = table[row, column].Length;
+                    }
+                }
+                stringLength[column] = stringCount;
+                stringCount = 0;
+                //Console.WriteLine("Größte Länge von " + column + " Spalte: " + stringLength[column]);
+            }
+            return stringLength;
+        }
+
+        // Data tabulate
+        public IEnumerable<string> DataEdit(string[,] table)
         {
             StringBuilder builder;
 
@@ -92,76 +164,8 @@ namespace Tabulate
             return results;
         }
 
-        // Table create
-        private string[,] CreateTable(IEnumerable<string> CSV_rows, string symbol)
-        {
-            string[,] tabletmp;
-
-            // Data in variables assign
-            // [] rows : stored all rows 
-            // [] columns : stored the first row, splited by symbol
-            rows = CSV_rows.ToArray();
-            columns = rows[0].Split(symbol);
-            stringLength = new int[columns.Length];
-            tabletmp = new string[rows.Length, columns.Length];
-
-            // temporary array for creating the table
-            string[] tmp;
-
-            // Create data in a two-dimensional array
-            for (int row = 0; row < rows.Length; row++)
-            {
-                // workingArr created with null values
-                string[] workingArr = new string[columns.Length];
-                tmp = rows[row].Split(symbol);
-
-                // Copy data from tmp to workingArr
-                for (int column = 0; column < columns.Length; column++)
-                {
-                    // Check Array.Copy, before for this for loop? and workingArr only need to be declare once?
-                    if (workingArr.Length < tmp.Length)
-                    {
-                        Array.Copy(tmp, 0, workingArr, 0, workingArr.Length);
-                    }
-                    else
-                    {
-                        Array.Copy(tmp, 0, workingArr, 0, tmp.Length);
-                    }
-
-                    // Assign " " for rows with empty values
-                    if (workingArr[column] == null)
-                    {
-                        workingArr[column] = " ";
-                    }
-
-                    tabletmp[row, column] = workingArr[column];
-                }
-            }
-            return tabletmp;
-        }
-
-        // Calculate the number of largest string lengths per column
-        private void StringLengthEachColumn()
-        {
-            int stringCount = 0;
-            for (int column = 0; column < columns.Length; column++)
-            {
-                for (int row = 0; row < rows.Length; row++)
-                {
-                    if (stringCount < table[row, column].Length)
-                    {
-                        stringCount = table[row, column].Length;
-                    }
-                }
-                stringLength[column] = stringCount;
-                stringCount = 0;
-                //Console.WriteLine("Größte Länge von " + column + " Spalte: " + stringLength[column]);
-            }
-            Console.WriteLine();
-        }
-
         // Merge strings from one row
-        private string ToString(string[] daten)
+        public string ToString(string[] daten)
         {
             StringBuilder tmp = new StringBuilder();
             for (int i = 0; i < daten.Length; i++)

@@ -51,6 +51,7 @@ namespace Tabulate
             return (this.path == ((Data)obj).Path) && (this.symbol == ((Data)obj).Symbol);
         }
 
+        //Override the GetHashCode method to allow a type to work correctly in a hash table
         public override int GetHashCode()
         {
             return HashCode.Combine(path, symbol, Path, Symbol);

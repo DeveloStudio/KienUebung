@@ -69,7 +69,7 @@ namespace Tabulate
                     builder.Append(" at line: " + lineNumber + ". ");
                     builder.Append("Here are some detail information: \n");
                     builder.Append(ex.Message + "\n");
-                    return builder.Append("--------------------\n").ToString();
+                    return builder.Append("--------------------").ToString();
                 }
             }
             return ex.Message;
