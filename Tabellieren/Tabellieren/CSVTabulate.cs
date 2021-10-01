@@ -8,9 +8,6 @@ namespace Tabulate
 {
     public class CSVTabulate : ICSV
     {
-        // 2-dimensional array for storage data
-        private string[,] table;
-
         public IEnumerable<string> Tabulate(Data data)
         {
             try
@@ -19,10 +16,14 @@ namespace Tabulate
                 {
                     Console.WriteLine(data.ToString());
                     Console.WriteLine();
+
+                    // Read data from path
                     string[] CSV_rows = File.ReadAllLines(data.Path);
-                    table = CreateTable(CSV_rows, data.Symbol);
-                    StringLengthEachColumn(table);
-                    return DataEdit(table);
+
+                    // 2-dimensional array for storage data
+                    string[,] table = CreateTable(CSV_rows, data.Symbol);
+                    int[] largestStringEachColumn = StringLengthEachColumn(table);
+                    return DataEdit(table, largestStringEachColumn);
                 }
                 catch (Exception ex)
                 {
@@ -112,49 +113,50 @@ namespace Tabulate
                 }
                 stringLength[column] = stringCount;
                 stringCount = 0;
-                //Console.WriteLine("Größte Länge von " + column + " Spalte: " + stringLength[column]);
             }
             return stringLength;
         }
 
         // Data tabulate
-        public IEnumerable<string> DataEdit(string[,] table)
+        public IEnumerable<string> DataEdit(string[,] table, int[] largestStringEachColumn)
         {
             StringBuilder builder;
+            int rows = table.GetLength(0);
+            int columns = table.GetLength(1);
 
-            // Result each columns is stored here
+            // Result each columns as string is stored here
             List<string> results = new List<string>();
 
-            // Variables for creating the characters of the header
-            string[] headerString = new string[columns.Length];
+            // Variables for creating the characters for the header
+            string[] headerString = new string[columns];
             bool head = false;
 
-            for (int row = 0; row < rows.Length; row++)
+            for (int row = 0; row < rows; row++)
             {
                 //String array for the output, create one per row
-                string[] toString = new string[columns.Length];
+                string[] stringOutput = new string[columns];
 
-                for (int column = 0; column < columns.Length; column++)
+                for (int column = 0; column < columns; column++)
                 {
                     builder = new StringBuilder(table[row, column]);
-                    if (table[row, column].Length < stringLength[column])
+                    if (table[row, column].Length < largestStringEachColumn[column])
                     {
                         // Add spaces at the end of each string, if the string < maximal stringlength of the column 
-                        builder.Insert(table[row, column].Length, " ", stringLength[column] - (table[row, column].Length));
+                        builder.Insert(table[row, column].Length, " ", largestStringEachColumn[column] - (table[row, column].Length));
                     }
                     builder.Append("|");
-                    toString[column] = builder.ToString();
+                    stringOutput[column] = builder.ToString();
 
                     // For the representation of the characters under title name
                     if (head == false)
                     {
                         builder = new StringBuilder();
-                        builder.Insert(0, "_", stringLength[column]);
+                        builder.Insert(0, "_", largestStringEachColumn[column]);
                         builder.Append("+");
                         headerString[column] = builder.ToString(); // ToString() here ist the method from StringBuilder class
                     }
                 }
-                results.Add(ToString(toString)); // own ToString() method
+                results.Add(ToString(stringOutput)); // own ToString() method
                 if (head == false)
                 {
                     results.Add(ToString(headerString));
@@ -174,15 +176,5 @@ namespace Tabulate
             }
             return tmp.ToString();
         }
-
-        // Tabelle ausgeben
-        //for(int i = 0; i < zeilen.Length; i++)
-        //{
-        //    for(int j = 0; j < spalten.Length; j++)
-        //    {
-        //        Console.WriteLine(tabelle[i , j]);
-        //    }
-        //    Console.WriteLine();
-        //}
     }
 }

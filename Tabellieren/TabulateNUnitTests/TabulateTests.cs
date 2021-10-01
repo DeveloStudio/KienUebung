@@ -1,6 +1,4 @@
 using NUnit.Framework;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Tabulate;
@@ -9,46 +7,16 @@ namespace TabulateNUnitTests
 {
     public class TabulateTests
     {
-        
+        private CSVTabulate tabulate;
+        private string[,] tableResults;
+        private int[] stringLengthResult;
 
         [SetUp]
         public void Setup()
         {
-            
-        }
+            tabulate = new CSVTabulate();
 
-        [Test]
-        public void Test_Output_Null()
-        {
-            MyOutput output = new MyOutput();
-            IEnumerable<string> datas = null;
-            Assert.Throws<CustomException>(() => output.Out(datas));
-        }
-
-        [Test]
-        public void Test_CreateDataPath()
-        {
-            string path = Directory.GetCurrentDirectory();
-            string file = "Data.csv";
-            string symbol = ";";
-            Data testData = new Data(path + "\\" + file, symbol);
-
-            Assert.AreEqual(testData, LoadData.CreateDataPath(path, file, symbol));
-        }
-
-        [Test]
-        public void Test_Tabulate_CreateTable()
-        {
-            string[] CSV_tests = new string[3];
-            CSV_tests[0] = "Test1;Test2;Test3;TestHeader";
-            CSV_tests[1] = "Test4;Test5;;Test6;TestOutRange";
-            CSV_tests[2] = "Test7;Test8;Test9";
-
-            CSVTabulate tabulate = new CSVTabulate();
-
-            string symbol = ";";
-
-            string[,] tableResults = new string[3, 4];
+            tableResults = new string[3, 4];
             tableResults[0, 0] = "Test1";
             tableResults[0, 1] = "Test2";
             tableResults[0, 2] = "Test3";
@@ -64,15 +32,89 @@ namespace TabulateNUnitTests
             tableResults[2, 2] = "Test9";
             tableResults[2, 3] = "isNull";
 
-            Assert.AreEqual(tableResults, tabulate.CreateTable(CSV_tests, symbol));
+            stringLengthResult = new int[4];
+            stringLengthResult[0] = 5;
+            stringLengthResult[1] = 5;
+            stringLengthResult[2] = 7;
+            stringLengthResult[3] = 10;
+        }
 
+        [Test]
+        public void Test_Output_Null()
+        {
+            MyOutput output = new MyOutput();
+            IEnumerable<string> datas = null;
+
+            // Test the output class for throw the right exception if the data is null
+            Assert.Throws<CustomException>(() => output.Out(datas));
+        }
+
+        [Test]
+        public void Test_CreateDataPath()
+        {
+            string path = Directory.GetCurrentDirectory();
+            string file = "Data.csv";
+            string symbol = ";";
+
+            // Path for the test
+            Data testData = new Data(path + "\\" + file, symbol);
+
+            // Test if the path result of the method equal to the expected path
+            Assert.AreEqual(testData, LoadData.CreateDataPath(path, file, symbol));
+        }
+
+        [Test]
+        public void Test_Tabulate_CreateTable()
+        {
+            string[] CSV_tests = new string[3];
+            CSV_tests[0] = "Test1;Test2;Test3;TestHeader";
+            CSV_tests[1] = "Test4;Test5;;Test6;TestOutRange";
+            CSV_tests[2] = "Test7;Test8;Test9";
+            string symbol = ";";
+
+            // Test if the table result of the method equal to the expected table
+            Assert.AreEqual(tableResults, tabulate.CreateTable(CSV_tests, symbol));
         }
 
         [Test]
         public void Test_Tabulate_StringLength_EachColumn()
         {
-
+            // Test if the result of the methode matched the expected largest string each column
+            Assert.AreEqual(stringLengthResult, tabulate.StringLengthEachColumn(tableResults));
         }
 
+        [Test]
+        public void Test_Tabulate_DataEdit()
+        {
+            List<string> testResult = new List<string>();
+
+            string OutputTitle = "Test1|Test2|Test3  |TestHeader|";
+            string HeaderOutput = "_____+_____+_______+__________+";
+            string OutputBody1 = "Test4|Test5|isEmpty|Test6     |";
+            string OutputBody2 = "Test7|Test8|Test9  |isNull    |";
+
+            testResult.Add(OutputTitle);
+            testResult.Add(HeaderOutput);
+            testResult.Add(OutputBody1);
+            testResult.Add(OutputBody2);
+
+            // Test if the returned list is the same as the expected list
+            Assert.AreEqual(testResult, tabulate.DataEdit(tableResults, stringLengthResult));
+        }
+
+        [Test]
+        public void Test_Tabulate_ToString()
+        {
+            string[] test = new string[4];
+            test[0] = "Test1|";
+            test[1] = "Test2|";
+            test[2] = "Test3  |";
+            test[3] = "TestHeader|";
+
+            string result = "Test1|Test2|Test3  |TestHeader|";
+
+            // Test ToString Method of the class tabulate
+            Assert.AreEqual(result, tabulate.ToString(test));
+        }
     }
 }
