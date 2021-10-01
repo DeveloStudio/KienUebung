@@ -1,6 +1,9 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using Tabulate;
 
 namespace TabulateNUnitTests
@@ -45,7 +48,7 @@ namespace TabulateNUnitTests
             MyOutput output = new MyOutput();
             IEnumerable<string> datas = null;
 
-            // Test the output class for throw the right exception if the data is null
+            // Test MyOutput class for throw the right exception if the data is null
             Assert.Throws<CustomException>(() => output.Out(datas));
         }
 
@@ -59,7 +62,7 @@ namespace TabulateNUnitTests
             // Path for the test
             Data testData = new Data(path + "\\" + file, symbol);
 
-            // Test if the path result of the method equal to the expected path
+            // Test if the path result of the method equal to the expected path for class Data
             Assert.AreEqual(testData, LoadData.CreateDataPath(path, file, symbol));
         }
 
@@ -115,6 +118,87 @@ namespace TabulateNUnitTests
 
             // Test ToString Method of the class tabulate
             Assert.AreEqual(result, tabulate.ToString(test));
+        }
+
+        [Test]
+        public void Test_CustomExMessage_NoInnerEx()
+        {
+            CustomException ex = new CustomException("It is a Test");
+            string testmessage = "It is a Test";
+
+            // Test custom message without innerexception 
+            Assert.AreEqual(testmessage, CustomException.CustomMessage(ex));
+        }
+
+        [Test]
+        public void Test_CustomExMessage_WithoutParameter()
+        {
+            Type T = this.GetType();
+
+            try
+            {
+                try
+                {
+                    throw new FileNotFoundException();
+                }
+                catch (FileNotFoundException ex)
+                {
+                    throw new CustomException(ex.Message, ex);
+                }
+            }
+            catch (CustomException ex)
+            {
+                //Line number where exception occur(pdb file needed)
+                StackTrace trace = new StackTrace(ex.InnerException, true);
+                var stackFrame = trace.GetFrame(trace.FrameCount - 1);
+                var lineNumber = stackFrame.GetFileLineNumber();
+
+                string stringToTest = "--------------------\n"
+                        + "The type of exception is: FileNotFoundException\n"
+                        + "\nFrom namespace " + T.Namespace + " in class " + T.Name + " under the method " + MethodBase.GetCurrentMethod().Name + "() at line: " + lineNumber + "."
+                        + " Here are some detail information: \n"
+                        + ex.Message + "\n"
+                        + "--------------------";
+                Assert.AreEqual(stringToTest, CustomException.CustomMessage(ex));
+            }
+        }
+
+        [Test]
+        public void Test_CustomExMessage_WithParameter(string test, string[] test2)
+        {
+            Type T = this.GetType();
+            ParameterInfo[] infos = MethodBase.GetCurrentMethod().GetParameters();
+
+            //string a = test;
+            //string[] b = test2;
+
+            try
+            {
+                try
+                {
+                    throw new DirectoryNotFoundException();
+                }
+                catch (DirectoryNotFoundException ex)
+                {
+                    throw new CustomException(ex.Message, ex);
+                }
+            }
+            catch (CustomException ex)
+            {
+                // Line number where exception occur (pdb file needed)
+                StackTrace trace = new StackTrace(ex.InnerException, true);
+                var stackFrame = trace.GetFrame(trace.FrameCount - 1);
+                var lineNumber = stackFrame.GetFileLineNumber();
+
+                string stringToTest = "--------------------\n"
+                        + "The type of exception is: DirectoryNotFoundException\n"
+                        + "\nFrom namespace " + T.Namespace + " in class " + T.Name + " under the method "
+                                                            + MethodBase.GetCurrentMethod().Name + "(" + infos[0] + ", " + infos[1] + ") at line: " + lineNumber + "."
+                        + " Here are some detail information: \n"
+                        + ex.Message + "\n"
+                        + "--------------------";
+                Assert.AreEqual(stringToTest, CustomException.CustomMessage(ex));
+            }
         }
     }
 }

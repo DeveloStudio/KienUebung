@@ -66,8 +66,8 @@ namespace Tabulate
                         paramsBuilder.Append("()");
                     }
                     builder.Append(paramsBuilder);
-                    builder.Append(" at line: " + lineNumber + ". ");
-                    builder.Append("Here are some detail information: \n");
+                    builder.Append(" at line: " + lineNumber + ".");
+                    builder.Append(" Here are some detail information: \n");
                     builder.Append(ex.Message + "\n");
                     return builder.Append("--------------------").ToString();
                 }
