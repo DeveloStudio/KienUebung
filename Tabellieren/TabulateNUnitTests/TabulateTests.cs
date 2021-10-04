@@ -8,6 +8,7 @@ using Tabulate;
 
 namespace TabulateNUnitTests
 {
+    [TestFixture]
     public class TabulateTests
     {
         private CSVTabulate tabulate;
