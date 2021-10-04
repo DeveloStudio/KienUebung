@@ -48,8 +48,8 @@ namespace TabulateNUnitTests
             MyOutput output = new MyOutput();
             IEnumerable<string> datas = null;
 
-            // Test MyOutput class for throw the right exception if the data is null
-            Assert.Throws<CustomException>(() => output.Out(datas));
+            // Test MyOutput.cs class for throw the right exception if the data is null
+            Assert.Throws<NullReferenceException>(() => output.Out(datas));
         }
 
         [Test]
@@ -62,7 +62,7 @@ namespace TabulateNUnitTests
             // Path for the test
             Data testData = new Data(path + "\\" + file, symbol);
 
-            // Test if the path result of the method equal to the expected path for class Data
+            // Test if the path result of the method equal to the expected path for class Data.cs
             Assert.AreEqual(testData, LoadData.CreateDataPath(path, file, symbol));
         }
 
@@ -75,14 +75,14 @@ namespace TabulateNUnitTests
             CSV_tests[2] = "Test7;Test8;Test9";
             string symbol = ";";
 
-            // Test if the table result of the method equal to the expected table
+            // Test if the table result of the method equal to the expected table for class CSVTabulate.cs
             Assert.AreEqual(tableResults, tabulate.CreateTable(CSV_tests, symbol));
         }
 
         [Test]
         public void Test_Tabulate_StringLength_EachColumn()
         {
-            // Test if the result of the methode matched the expected largest string each column
+            // Test if the result of the methode matched the expected largest string each column for class CSVTabulate.cs
             Assert.AreEqual(stringLengthResult, tabulate.StringLengthEachColumn(tableResults));
         }
 
@@ -101,7 +101,7 @@ namespace TabulateNUnitTests
             testResult.Add(OutputBody1);
             testResult.Add(OutputBody2);
 
-            // Test if the returned list is the same as the expected list
+            // Test if the returned list is the same as the expected list for class CSVTabulate.cs
             Assert.AreEqual(testResult, tabulate.DataEdit(tableResults, stringLengthResult));
         }
 
@@ -116,7 +116,7 @@ namespace TabulateNUnitTests
 
             string result = "Test1|Test2|Test3  |TestHeader|";
 
-            // Test ToString Method of the class tabulate
+            // Test ToString Method of the class tabulate for class CSVTabulate.cs
             Assert.AreEqual(result, tabulate.ToString(test));
         }
 
@@ -126,7 +126,7 @@ namespace TabulateNUnitTests
             CustomException ex = new CustomException("It is a Test");
             string testmessage = "It is a Test";
 
-            // Test custom message without innerexception 
+            // Test custom message without innerexception for class CustomException.cs
             Assert.AreEqual(testmessage, CustomException.CustomMessage(ex));
         }
 
@@ -163,15 +163,12 @@ namespace TabulateNUnitTests
             }
         }
 
-        [Test]
+
+        [TestCase("Test", new []{"Test1, Test2"})]
         public void Test_CustomExMessage_WithParameter(string test, string[] test2)
         {
             Type T = this.GetType();
             ParameterInfo[] infos = MethodBase.GetCurrentMethod().GetParameters();
-
-            //string a = test;
-            //string[] b = test2;
-
             try
             {
                 try

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace Tabulate
 {
@@ -10,7 +11,7 @@ namespace Tabulate
         {
             if (datas == null)
             {
-                throw new CustomException("From class MyOutPut: Data is null");
+                throw new NullReferenceException("From class MyOutPut under the method " + MethodBase.GetCurrentMethod() + ": Data is null");
             }
 
             foreach (string data in datas)
