@@ -56,7 +56,7 @@ namespace TabulateNUnitTests
         [Test]
         public void Test_CreateDataPath()
         {
-            string path = Directory.GetCurrentDirectory();
+            string path = @"C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\TabulateNUnitTests\bin\Debug\netcoreapp3.1";
             string file = "Data.csv";
             string symbol = ";";
 
@@ -64,7 +64,7 @@ namespace TabulateNUnitTests
             Data testData = new Data(path + "\\" + file, symbol);
 
             // Test if the path result of the method equal to the expected path for class Data.cs
-            Assert.AreEqual(testData, LoadData.CreateDataPath(path, file, symbol));
+            Assert.AreEqual(testData, LoadData.CreateDataPath(Directory.GetCurrentDirectory(), file, symbol));
         }
 
         [Test]
