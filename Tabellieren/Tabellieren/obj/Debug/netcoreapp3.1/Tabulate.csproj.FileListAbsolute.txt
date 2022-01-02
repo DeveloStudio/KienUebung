@@ -12,3 +12,16 @@ C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\ne
 C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabulate.dll
 C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabulate.pdb
 C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabulate.genruntimeconfig.cache
+C:\Users\Pushpa\Downloads\Uebung\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Tabulate.exe
+C:\Users\Pushpa\Downloads\Uebung\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Tabulate.deps.json
+C:\Users\Pushpa\Downloads\Uebung\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Tabulate.runtimeconfig.json
+C:\Users\Pushpa\Downloads\Uebung\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Tabulate.runtimeconfig.dev.json
+C:\Users\Pushpa\Downloads\Uebung\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Tabulate.dll
+C:\Users\Pushpa\Downloads\Uebung\KienUebung\Tabellieren\Tabellieren\bin\Debug\netcoreapp3.1\Tabulate.pdb
+C:\Users\Pushpa\Downloads\Uebung\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabulate.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Pushpa\Downloads\Uebung\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabulate.AssemblyInfoInputs.cache
+C:\Users\Pushpa\Downloads\Uebung\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabulate.AssemblyInfo.cs
+C:\Users\Pushpa\Downloads\Uebung\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabulate.csproj.CoreCompileInputs.cache
+C:\Users\Pushpa\Downloads\Uebung\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabulate.dll
+C:\Users\Pushpa\Downloads\Uebung\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabulate.pdb
+C:\Users\Pushpa\Downloads\Uebung\KienUebung\Tabellieren\Tabellieren\obj\Debug\netcoreapp3.1\Tabulate.genruntimeconfig.cache

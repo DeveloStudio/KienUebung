@@ -4969,28 +4969,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nguyen\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Pushpa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\Tabellieren\\TabulateNUnitTests\\TabulateNUnitTests.csproj",
+      "projectUniqueName": "C:\\Users\\Pushpa\\Downloads\\Uebung\\KienUebung\\Tabellieren\\TabulateNUnitTests\\TabulateNUnitTests.csproj",
       "projectName": "TabulateNUnitTests",
-      "projectPath": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\Tabellieren\\TabulateNUnitTests\\TabulateNUnitTests.csproj",
-      "packagesPath": "C:\\Users\\nguyen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\Tabellieren\\TabulateNUnitTests\\obj\\",
+      "projectPath": "C:\\Users\\Pushpa\\Downloads\\Uebung\\KienUebung\\Tabellieren\\TabulateNUnitTests\\TabulateNUnitTests.csproj",
+      "packagesPath": "C:\\Users\\Pushpa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Pushpa\\Downloads\\Uebung\\KienUebung\\Tabellieren\\TabulateNUnitTests\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\Pushpa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -5003,8 +4995,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\Tabellieren\\Tabellieren\\Tabulate.csproj": {
-              "projectPath": "C:\\Users\\nguyen\\Documents\\GitHub\\KienUebung\\Tabellieren\\Tabellieren\\Tabulate.csproj"
+            "C:\\Users\\Pushpa\\Downloads\\Uebung\\KienUebung\\Tabellieren\\Tabellieren\\Tabulate.csproj": {
+              "projectPath": "C:\\Users\\Pushpa\\Downloads\\Uebung\\KienUebung\\Tabellieren\\Tabellieren\\Tabulate.csproj"
             }
           }
         }
@@ -5051,7 +5043,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

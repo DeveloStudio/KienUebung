@@ -56,7 +56,7 @@ namespace TabulateNUnitTests
         [Test]
         public void Test_CreateDataPath()
         {
-            string path = @"C:\Users\nguyen\Documents\GitHub\KienUebung\Tabellieren\TabulateNUnitTests\bin\Debug\netcoreapp3.1";
+            string path = Directory.GetCurrentDirectory();
             string file = "Data.csv";
             string symbol = ";";
 
